@@ -1,6 +1,6 @@
 {
   "name": "autocomplete-computercraft",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "ComputerCraft autocompletions",
   "main": "./lib/main",
   "license": "MIT",
