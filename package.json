@@ -1,0 +1,18 @@
+{
+  "name": "autocomplete-computercraft",
+  "version": "0.1.0",
+  "description": "ComputerCraft autocompletions",
+  "main": "./lib/main",
+  "license": "MIT",
+  "repository": "https://github.com/poeschl/autocomplete-computercraft",
+  "engines": {
+    "atom": ">=0.174.0 <2.0.0"
+  },
+  "providedServices": {
+    "autocomplete.provider": {
+      "versions": {
+        "2.0.0": "getProvider"
+      }
+    }
+  }
+}

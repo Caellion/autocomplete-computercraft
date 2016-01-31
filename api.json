@@ -1,0 +1,14 @@
+{
+    "commands": {
+        "os": {
+            "version": {},
+            "getComputerId": {}
+        },
+        "rednet": {
+        
+        },
+        "turtle": {
+        
+        }
+    }
+}
