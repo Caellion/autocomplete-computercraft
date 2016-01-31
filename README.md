@@ -3,7 +3,7 @@ Computercraft Autocompletion
 
 ComputerCraft method autocompletions in Atom. You need [autocomplete-plus](https://github.com/atom-community/autocomplete-plus) and the [language-computercraft](https://github.com/Admicos/language-computercraft) to make it work.
 
-![ComputerCraft-completions](https://github.com/Poeschl/autocomplete-computercraft/blob/master/assets/early_screenshot.png)
+![ComputerCraft-completions](https://raw.githubusercontent.com/Poeschl/autocomplete-computercraft/master/assets/early_screenshot.png)
 
 Contribute
 --------------
