@@ -25,12 +25,11 @@ module.exports =
 
     getPossibleClass: (allCommands, prefix) ->
         
-        console.log allCommands
-        console.log prefix
+        #console.log allCommands
+        #console.log prefix
         
         suggestions = []
         if prefix.indexOf(".") > 0
-            console.log "recursive"
             splitPrefix = prefix.split(".")
             #Remove first element   
             firstElement = splitPrefix.shift()
@@ -48,14 +47,17 @@ module.exports =
                 if prefix.length == 0 or firstCharsEqual(command.className, prefix)
                     suggestions.push(@buildClass(command.className))
                 
-        console.log suggestions
+        #console.log suggestions
         suggestions
         
     getPossibleMethod: (methods, prefix) ->
         suggestions = []
-        for method in methods
-            if prefix.length is 0 or firstCharsEqual(method.method, prefix)
-                suggestions.push(@buildMethod(method.method, method.description, method.parameter, method.returnValue))
+        
+        #TODO: Remove dirty hack
+        if not prefix.endsWith('(')
+            for method in methods
+                if prefix.length is 0 or firstCharsEqual(method.method, prefix)
+                    suggestions.push(@buildMethod(method.method, method.description, method.parameter, method.returnValue))
         suggestions
         
     buildClass: (childClass) ->
