@@ -3,8 +3,8 @@ Computercraft Autocompletion
 
 ComputerCraft method autocompletions in Atom. You need [autocomplete-plus](https://github.com/atom-community/autocomplete-plus) and the [language-computercraft](https://github.com/Admicos/language-computercraft) to make it work.
 
-![ComputerCraft-completions](https://raw.githubusercontent.com/Poeschl/autocomplete-computercraft/master/assets/early_screenshot.png)
+![ComputerCraft-completions](https://raw.githubusercontent.com/Poeschl/autocomplete-computercraft/master/assets/screenshot.png)
 
-Contribute
---------------
-The list of methods is inside the api.json file. I you miss something fork the repository and send me a pull request with you additions.
+Wanted Features
+-----------------------
+If you feel like its some thing missing or you found a bug feel free to create a issue on the github issues.
