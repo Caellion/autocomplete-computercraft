@@ -32,7 +32,10 @@ describe "ComputerCraft autocompletions", ->
         
     it "return 'os' on first level", ->
         editor.setText('os')
-        expect(getCompletions()[0].text).toBe 'os'
+        
+        suggestion = getCompletions()[0]
+        expect(suggestion.text).toBe 'os'
+        expect(suggestion.type).toBe 'class'
         
         editor.setText('o')
         expect(getCompletions()[0].text).toBe 'os'
@@ -43,4 +46,10 @@ describe "ComputerCraft autocompletions", ->
         
     it "return version on second level", ->
         editor.setText('os.version')
-        expect(getCompletions()[0].text).toBe 'version'
+        
+        suggestion = getCompletions()[0]
+        expect(suggestion.displayText).toBe 'version'
+        expect(suggestion.text).toBe 'version()'
+        expect(suggestion.leftLabel).toBe 'string version'
+        expect(suggestion.type).toBe 'method'
+

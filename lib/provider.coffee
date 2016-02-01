@@ -6,7 +6,7 @@ module.exports =
     filterSuggestions: true
 
     getSuggestions: ({editor, bufferPosition, scopeDescriptor, prefix}) ->
-        @getPossibleCommands(@completions.commands, @getPrefix(editor, bufferPosition))
+        @getPossibleClass(@completions.childClasses, @getPrefix(editor, bufferPosition))
 
     # onDidInsertSuggestion: ({editor, suggestion}) ->
         
@@ -16,7 +16,7 @@ module.exports =
             @completions = JSON.parse(content) unless error?
             return
 
-    getPossibleCommands: (allCommands, prefix) ->
+    getPossibleClass: (allCommands, prefix) ->
         
         console.log allCommands
         console.log prefix
@@ -24,20 +24,44 @@ module.exports =
         suggestions = []
         if prefix.indexOf(".") > 0
             console.log "recursive"
-            lastSection = prefix.split(".")
+            splitPrefix = prefix.split(".")
             #Remove first element   
-            firstElement = lastSection.shift()
-            suggestions = @getPossibleCommands(allCommands[firstElement], lastSection.join('.'))
+            firstElement = splitPrefix.shift()
+            for command in allCommands
+                if firstCharsEqual(command.className, firstElement)
+                    if command.childClasses.length == 0
+                        # methods
+                        suggestions = @getPossibleMethod(command.methods, splitPrefix.join('.'))
+                    else
+                        # classes
+                        suggestions = @getPossibleClass(command.childClasses, splitPrefix.join('.'))
+                    break
         else
-            for command, subcommands of allCommands when not prefix or firstCharsEqual(command, prefix)
-                suggestions.push(@buildSuggestion(command))
+            for command in allCommands     
+                if prefix.length == 0 or firstCharsEqual(command.className, prefix)
+                    suggestions.push(@buildClass(command.className))
+                
         console.log suggestions
         suggestions
         
-    buildSuggestion: (command) ->
-        text: command
-        type: 'function'
+    getPossibleMethod: (methods, prefix) ->
+        suggestions = []
+        for method in methods
+            if prefix.length == 0 or firstCharsEqual(method.method, prefix)
+                suggestions.push(@buildMethod(method.method, method.description, method.parameter, method.returnValue))
+        suggestions
         
+    buildClass: (childClass) ->
+        text: childClass
+        type: 'class'
+        
+    buildMethod: (command, description, parameter, returnValue) ->
+        displayText: command
+        text: command + parameter
+        leftLabel: returnValue
+        description: description
+        type: 'method'
+    
     getPrefix: (editor, bufferPosition) ->
         # Whatever your prefix regex might be
         regex = /([\w]+\.?)+/
