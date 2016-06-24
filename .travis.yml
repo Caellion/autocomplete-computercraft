@@ -9,7 +9,7 @@ os:
 
 env:
   global:
-    - APM_TEST_PACKAGES=""
+    - APM_TEST_PACKAGES="autocomplete-computercraft language-computercraft"
 
   matrix:
     - ATOM_CHANNEL=stable
