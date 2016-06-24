@@ -1,4 +1,4 @@
-Computercraft Autocompletion
+Computercraft Autocompletion [![Build Status](https://travis-ci.org/Poeschl/autocomplete-computercraft.svg?branch=master)](https://travis-ci.org/Poeschl/autocomplete-computercraft)
 ===================
 
 ComputerCraft method autocompletions in Atom. You need [autocomplete-plus](https://github.com/atom-community/autocomplete-plus) and the [language-computercraft](https://github.com/Admicos/language-computercraft) to make it work.
