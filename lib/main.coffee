@@ -1,3 +1,4 @@
+require '../api.json'
 provider = require './provider'
 
 module.exports =
