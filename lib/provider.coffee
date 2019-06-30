@@ -34,7 +34,7 @@ module.exports =
             #Remove first element   
             firstElement = splitPrefix.shift()
             for command in allCommands
-                if firstCharsEqual(command.className, firstElement)
+                if command.className is firstElement
                     if command.childClasses.length is 0
                         # methods
                         suggestions = @getPossibleMethod(command.methods, splitPrefix.join('.'))
