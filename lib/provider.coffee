@@ -73,7 +73,7 @@ module.exports =
     
     getPrefix: (editor, bufferPosition) ->
         # Whatever your prefix regex might be
-        regex = /([\w]+\.?)+\(?/
+        regex = /([\w]+\.?)+\(?$/
         line = editor.getTextInRange([[bufferPosition.row, 0], bufferPosition])
         line.match(regex)?[0] or ''
     
