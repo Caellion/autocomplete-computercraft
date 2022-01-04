@@ -1,1 +1,1241 @@
-{"childClasses":[{"childClasses":[],"className":"bit","methods":[{"description":"Shifts a number left by a specified number of bits.","method":"blshift","parameter":"(number n, number bits)","returnValue":"number value"},{"description":"Shifts a number right arithmetically by a specified number of bits.","method":"brshift","parameter":"(number n, number bits)","returnValue":"number value"},{"description":"Shifts a number right logically by a specified number of bits.","method":"blogic_rshift","parameter":"(number n, number bits)","returnValue":"number value"},{"description":"Computes the bitwise exclusive OR of two numbers.","method":"bxor","parameter":"(number m, number n)","returnValue":"number value"},{"description":"Computes the bitwise inclusive OR of two numbers.","method":"bor","parameter":"(number m, number n)","returnValue":"number value"},{"description":"Computes the bitwise AND of two numbers.","method":"band","parameter":"(number m, number n)","returnValue":"number value"},{"description":"Computes the bitwise NOT of a number.","method":"bnot","parameter":"(number n)","returnValue":"number value"}]},{"childClasses":[],"className":"colors","methods":[{"description":"Combines one or more colors (or sets of colors) into a larger set.","method":"combine","parameter":"(number color1, number color2, ...)","returnValue":"number value"},{"description":"Removes one or more colors (or sets of colors) from an initial set.","method":"subtract","parameter":"(number colors, number color1, number color2, ...)","returnValue":"number value"},{"description":"Tests whether color is contained within colors.","method":"test","parameter":"(number colors, number color)","returnValue":"boolean contained"}]},{"childClasses":[],"className":"commands","methods":[{"description":"Executes the specified command, yields until the result is determined, then returns it.","method":"exec","parameter":"(string command)","returnValue":"boolean success, table output"},{"description":"Executes the specified command, but doesn't yield. Queues a \"task_complete\" event after the command is executed.","method":"execAsync","parameter":"(string command)","returnValue":"number taskID"},{"description":"Returns a numerically indexed table filled with strings representing acceptable commands for commands.exec() / commands.execAsync().","method":"list","parameter":"()","returnValue":"table commands"},{"description":"Returns the Minecraft world coordinates of the computer running the command.","method":"getBlockPosition","parameter":"()","returnValue":"number x, number y, number z"},{"description":"Returns a table containing info about the block at the specified world location. Keys are \"name\" (a string) and \"metadata\" (a number).","method":"getBlockInfo","parameter":"(number x, number y, number z)","returnValue":"table block info"},{"description":"Returns a table containing sub-tables with info about the blocks within the specified world locations. Added by CC 1.76","method":"getBlockInfos","parameter":"(number x1, number y1, number z1, number x2, number y2, number z2)","returnValue":"table blocks info"}]},{"childClasses":[],"className":"coroutine","methods":[{"description":"Creates a new coroutine.","method":"create","parameter":"(function f)","returnValue":"coroutine coro"},{"description":"Starts or resumes a coroutine.","method":"resume","parameter":"(coroutine coro, ...)","returnValue":"any"},{"description":"Returns the currently executing coroutine.","method":"running","parameter":"()","returnValue":"coroutine"},{"description":"Returns the status of a coroutine.","method":"status","parameter":"(coroutine coro)","returnValue":"string status"},{"description":"Creates a new coroutine and wraps it in a function.","method":"wrap","parameter":"(function f)","returnValue":"function wrapper"},{"description":"Pauses the currently executing coroutine and passes control to its caller.","method":"yield","parameter":"(...)","returnValue":"any"}]},{"childClasses":[],"className":"disk","methods":[{"description":"Checks whether any item is in a disk drive.","method":"isPresent","parameter":"(string side)","returnValue":"boolean present"},{"description":"Checks whether a Floppy Disk is in a disk drive.","method":"hasData","parameter":"(string side)","returnValue":"boolean hasData"},{"description":"Gets the directory name where the contents of the floppy disk can be accessed.","method":"getMountPath","parameter":"(string side)","returnValue":"string/nil path"},{"description":"Sets the floppy disk's label.","method":"setLabel","parameter":"(string side, string label)","returnValue":"nil"},{"description":"Gets the floppy disk's label.","method":"getLabel","parameter":"(string side)","returnValue":"string/nil label"},{"description":"Gets the floppy disk's unique ID number.","method":"getID","parameter":"(string side)","returnValue":"number/nil id"},{"description":"Checks whether a music disk is in the drive.","method":"hasAudio","parameter":"(string side)","returnValue":"boolean hasAudio"},{"description":"Gets the title of the music disc in the drive.","method":"getAudioTitle","parameter":"(string side)","returnValue":"string/nil title"},{"description":"Starts playing the music disc in the drive.","method":"playAudio","parameter":"(string side)","returnValue":"nil"},{"description":"Stops playing the music disc in the drive.","method":"stopAudio","parameter":"(string side)","returnValue":"nil"},{"description":"Ejects any item currently in the drive, spilling it into the world as a loose item.","method":"eject","parameter":"(string side)","returnValue":"nil"}]},{"childClasses":[],"className":"fs","methods":[{"description":"Returns a list of all the files (including subdirectories but not their contents) contained in a directory, as a numerically indexed table.","method":"list","parameter":"(string path)","returnValue":"table files"},{"description":"Checks if a path refers to an existing file or directory.","method":"exists","parameter":"(string path)","returnValue":"boolean exists"},{"description":"Checks if a path refers to an existing directory.","method":"isDir","parameter":"(string path)","returnValue":"boolean isDirectory"},{"description":"Checks if a path is read-only (i.e. cannot be modified).","method":"isReadOnly","parameter":"(string path)","returnValue":"boolean readonly"},{"description":"Gets the final component of a pathname.","method":"getName","parameter":"(string path)","returnValue":"string name"},{"description":"Gets the storage medium holding a path, or nil if the path does not exist.","method":"getDrive","parameter":"(string path)","returnValue":"string/nil drive"},{"description":"Gets the size of a file in bytes.","method":"getSize","parameter":"(string path)","returnValue":"number size"},{"description":"Gets the remaining space on the drive containing the given directory.","method":"getFreeSpace","parameter":"(string path)","returnValue":"number space"},{"description":"Makes a directory.","method":"makeDir","parameter":"(string path)","returnValue":"nil"},{"description":"Moves a file or directory to a new location.","method":"move","parameter":"(string fromPath, string toPath)","returnValue":"nil"},{"description":"Copies a file or directory to a new location.","method":"copy","parameter":"(string fromPath, string toPath)","returnValue":"nil"},{"description":"Deletes a file or directory.","method":"delete","parameter":"(string path)","returnValue":"nil"},{"description":"Combines two path components, returning a path consisting of the local path nested inside the base path.","method":"combine","parameter":"(string basePath, string localPath)","returnValue":"string path"},{"description":"Opens a file so it can be read or written.","method":"open","parameter":"(string path, string mode)","returnValue":"table handle"},{"description":"Searches the computer's files using wildcards. Requires version 1.6 or later.","method":"find","parameter":"(string wildcard)","returnValue":"table files"},{"description":"Returns the parent directory of path. Requires version 1.63 or later.","method":"getDir","parameter":"(string path)","returnValue":"string parentDirectory"},{"description":"Returns a list of strings that could be combined with the provided name to produce valid entries in the specified folder. Requires version 1.74 or later.","method":"complete","parameter":"(string partial name, string path [, boolean include files] [, boolean include slashes])","returnValue":"table matches"}]},{"childClasses":[],"className":"gps","methods":[{"description":"Tries to retrieve the computer or turtles own location. On success, returns the location of the turtle’s modem. On failure (if no responses are received for timeout seconds, by default 2), returns nil. If debug is true, debug messages are printed.","method":"locate","parameter":"([number timeout [, boolean debug]])","returnValue":"(number x, number y, number z) or nil"}]},{"childClasses":[],"className":"help","methods":[{"description":"Returns the list of locations the API will look in for help files.","method":"path","parameter":"()","returnValue":"string path"},{"description":"Sets the list of locations the API will look in for help files.","method":"setPath","parameter":"(string path)","returnValue":"nil"},{"description":"Returns the path to the file containing the help page for topic, or nil if the topic cannot be found.","method":"lookup","parameter":"(string topic)","returnValue":"string/nil path"},{"description":"Returns a list of all available help topics.","method":"topics","parameter":"()","returnValue":"table topics"},{"description":"Returns a list of suffixes that can be concatenated with the prefix to get valid topic titles. Requires CC 1.74 or later.","method":"completeTopic","parameter":"(string topic prefix)","returnValue":"table topic suffixes"}]},{"childClasses":[],"className":"http","methods":[{"description":"Sends a HTTP request to a website, asynchronously.","method":"request","parameter":"(string url [, string postData [, table headers]])","returnValue":"nil"},{"description":"Sends a HTTP GET request to a website, synchronously.","method":"get","parameter":"(string url [, table headers])","returnValue":"table handle"},{"description":"Sends a HTTP POST request to a website, synchronously.","method":"post","parameter":"(string url, string postData [, table headers])","returnValue":"table handle"},{"description":"Checks if a URL is valid and is included in the HTTP whitelist.","method":"checkURL","parameter":"(string url)","returnValue":"boolean success [, string error]"}]},{"childClasses":[],"className":"keys","methods":[{"description":"Translates a numerical key code to a human-readable name.","method":"getName","parameter":"(number code)","returnValue":"string keyName"}]},{"childClasses":[],"className":"multishell","methods":[{"description":"Returns the ID of the currently running tab.","method":"getCurrent","parameter":"()","returnValue":"number tabID"},{"description":"Returns the number of tabs currently being handled by the multishell system.","method":"getCount","parameter":"()","returnValue":"number tabCount"},{"description":"Launches the specified script in a new tab.","method":"launch","parameter":"(table environment, string program path [, string arguments])","returnValue":"number newTabID"},{"description":"Switches focus to the specified tab.","method":"setFocus","parameter":"(number tabID)","returnValue":"boolean success"},{"description":"Relabels the specified tab to use the specified title.","method":"setTitle","parameter":"(number tabID, string title)","returnValue":""},{"description":"Returns the title of the specified tab.","method":"getTitle","parameter":"(number tabID)","returnValue":"string title"},{"description":"Returns the ID of the currently focused tab.","method":"getFocus","parameter":"()","returnValue":"number tabID"}]},{"childClasses":[],"className":"os","methods":[{"description":"Returns the version of the OS the computer is running, which (for CraftOS) also contains the version of ComputerCraft.","method":"version","parameter":"()","returnValue":"string version"},{"description":"Returns the unique ID of this computer. os.computerID() also behaves exactly the same as os.getComputerID().","method":"getComputerID","parameter":"()","returnValue":"number id"},{"description":"Returns the label of this computer. os.computerLabel() also behaves exactly the same as os.getComputerLabel().","method":"getComputerLabel","parameter":"()","returnValue":"string/nil label"},{"description":"Set the label of this computer.","method":"setComputerLabel","parameter":"(string/nil label)","returnValue":"nil"},{"description":"An advanced way of starting programs. A started program will have a given environment table which determines what functions it has available, as well as any variables it will be able to access by default. You may prefer to use the Shell (API) unless you need to do something special.","method":"run","parameter":"(table environment, string programPath [, string arguments])","returnValue":"boolean success"},{"description":"Loads a Lua script as an API in its own namespace. It will be available to all programs that run on the terminal.","method":"loadAPI","parameter":"(string path)","returnValue":"boolean success"},{"description":"Unloads a previously loaded API.","method":"unloadAPI","parameter":"(string name)","returnValue":"nil"},{"description":"Blocks until the computer receives an event, or if target-event is specified, will block until an instance of target-event occurs. os.pullEvent(target-event) returns the event and any parameters the event may have. If a target-event is specified, the computer will not break for any other events (except termination).","method":"pullEvent","parameter":"([string target-event])","returnValue":"string event, param1, param2, ..."},{"description":"Advanced version of pullEvent(). Blocks until the computer receives an event, or if target-event is specified, will block until an instance of target-event occurs. os.pullEventRaw(target-event) returns the event and any parameters the event may have. Unlike os.pullEvent(target-event), this function will not raise an error if a 'terminate' event is received.","method":"pullEventRaw","parameter":"([string target-event])","returnValue":"string event, param1, param2, ..."},{"description":"Adds an event to the event queue with the name event and the given parameters.","method":"queueEvent","parameter":"(string event, param1, param2, ...)","returnValue":"nil"},{"description":"Returns the amount of time since the in-game computer was started.","method":"clock","parameter":"()","returnValue":"number time"},{"description":"Queues an event to be triggered after a number of seconds (timeout). The ID of the timer is returned from this function to differentiate multiple timers. Timers are one-shot; once they have fired an event you will need to start another one if you need a recurring timer.","method":"startTimer","parameter":"(number timeout)","returnValue":"number timerID"},{"description":"Cancels a running timer, to prevent it throwing an event.","method":"cancelTimer","parameter":"(number timerID)","returnValue":"nil"},{"description":"Returns the current in-game time.","method":"time","parameter":"()","returnValue":"number time"},{"description":"Makes the system wait a number of seconds before continuing in the program. os.sleep(time) may also be used as simply \"sleep(time)\".","method":"sleep","parameter":"(number time)","returnValue":"nil"},{"description":"Return the current in-game day (the number of in-game days since the world was created).","method":"day","parameter":"()","returnValue":"number day"},{"description":"Queues an event to be triggered at the specified in-game time.","method":"setAlarm","parameter":"(number time)","returnValue":"number alarmID"},{"description":"Cancels a pending alarm, to prevent it throwing an event.","method":"cancelAlarm","parameter":"(number alarmID)","returnValue":"nil"},{"description":"Turns off the computer.","method":"shutdown","parameter":"()","returnValue":"nil"},{"description":"Reboots the computer.","method":"reboot","parameter":"()","returnValue":"nil"}]},{"childClasses":[],"className":"paintutils","methods":[{"description":"Loads and returns an image object from path.","method":"loadImage","parameter":"(string path)","returnValue":"table image"},{"description":"Draws an image at (x, y) where image is an image object.","method":"drawImage","parameter":"(table image, number x, number y)","returnValue":"nil"},{"description":"Draws a pixel at (x, y) in the specified color.","method":"drawPixel","parameter":"(number x, number y [, number color*])","returnValue":"nil"},{"description":"Draws a line from (startX, startY) to (endX, endY) in the specified color.","method":"drawLine","parameter":"(number startX, number startY, number endX, number endY [, number color*])","returnValue":"nil"},{"description":"Draws a box from (startX, startY) to (endX, endY) in the specified color. Requires version 1.64 or newer.","method":"drawBox","parameter":"(number startX, number startY, number endX, number endY [, number color])","returnValue":"nil"},{"description":"Draws a filled box from (startX, startY) to (endX, endY) in the specified color. Requires version 1.64 or newer.","method":"drawFilledBox","parameter":"(number startX, number startY, number endX, number endY [, number color])","returnValue":"nil"}]},{"childClasses":[],"className":"parallel","methods":[{"description":"Runs all the functions at the same time, and stops when any of them returns.","method":"waitForAny","parameter":"(function function1, function function2, ...)","returnValue":"number stoppedFunction"},{"description":"Runs all the functions at the same time, and stops when all of them have returned.","method":"waitForAll","parameter":"(function function1, function function2, ...)","returnValue":"nil"}]},{"childClasses":[],"className":"peripheral","methods":[{"description":"Returns true if a peripheral is connected on side.","method":"isPresent","parameter":"(string side)","returnValue":"boolean"},{"description":"Returns the type of peripheral connected on side, as a string. If no peripheral is connected, returns nil.","method":"getType","parameter":"(string side)","returnValue":"string /nil"},{"description":"Returns a list of the names of all the methods of the peripheral connected on side. If no peripheral is connected, returns nil.","method":"getMethods","parameter":"(string side)","returnValue":"table /nil"},{"description":"Calls a method on a peripheral. The arguments (apart from side and method) and the return values depend on the method being called. If no peripheral is connected, returns nil.","method":"call","parameter":"(string side, string method, ...)","returnValue":"any"},{"description":"Returns a table of functions, allowing you to call peripheral methods as if they were normal Lua functions. If no peripheral is connected, returns nil.","method":"wrap","parameter":"(string side)","returnValue":"table peripheral / nil"},{"description":"Finds an attached peripheral of the given type and if found returns a table of functions, similar to peripheral.wrap, allowing you to call peripheral methods as if they were normal Lua functions. If no peripheral of the given type is connected, it returns nil. Requires ComputerCraft 1.6 or later.","method":"find","parameter":"(string type [, function fnFilter( name, object )])","returnValue":"table peripheral / nil"},{"description":"This function returns a table of all the sides that have a peripheral present. If the present peripheral is a wired modem any names of the peripherals that is on the network are also added to the table.","method":"getNames","parameter":"()","returnValue":"table"}]},{"childClasses":[],"className":"rednet","methods":[{"description":"Tells the computer that the side can be used for networking.","method":"open","parameter":"(string side)","returnValue":"nil"},{"description":"Tells the computer that the side can no longer be used for networking.","method":"close","parameter":"(string side)","returnValue":"nil"},{"description":"Sends a message \"intended\" for another system with a specific ID, using the currently opened sides. The receiverID is the ID number (note - not a string) of the computer you're sending the message to. The types that can be sent as the message vary depending on the version of ComputerCraft in use.","method":"send","parameter":"(number receiverID, any message, [string protocol])","returnValue":"nil"},{"description":"Sends the message to all connected and open computers.","method":"broadcast","parameter":"(any message, [string protocol])","returnValue":"nil"},{"description":"Waits until a rednet message of the specified protocol has been received, or until timeout seconds have passed. Leave all arguments empty to wait for any message indefinitely. If only a single, numerical argument is passed, will wait that many seconds for a message of any protocol. Versions of ComputerCraft prior to 1.6 may return the distance to the transmitting computer - 1.6 or later returns message protocols instead, though distance can still be obtained via direct use of the Modem API.","method":"receive","parameter":"([ [string protocolFilter, ] number timeout])","returnValue":"number senderID, any message, number distance / string protocol"},{"description":"Returns true if the wireless modem is open.","method":"isOpen","parameter":"(string side)","returnValue":"boolean isOpen"},{"description":"Registers hostname against protocol for the purposes of rednet.lookup(). Only available in ComputerCraft 1.6 and above.","method":"host","parameter":"(string protocol, string hostname)","returnValue":"nil"},{"description":"Unregisters hostname from protocol. Only available in ComputerCraft 1.6 and above.","method":"unhost","parameter":"(string protocol, string hostname)","returnValue":"nil"},{"description":"Searches the local network for systems registered with a matching hostname and/or protocol, and returns matching IDs found. Only available in ComputerCraft 1.6 and above.","method":"lookup","parameter":"(string protocol, string hostname)","returnValue":"number ID1, number ID2, ..."},{"description":"Internal use function - runs automatically and does not need to be called directly. Waits for modem_message events to appear within the event queue and generates corresponding rednet_message events for use with this API. Also responds to rednet.lookup() requests.","method":"run","parameter":"()","returnValue":"nil"}]},{"childClasses":[],"className":"redstone","methods":[{"description":"Returns a table of possible sides.","method":"getSides","parameter":"()","returnValue":""},{"description":"Returns the current redstone input signal state on side.","method":"getInput","parameter":"(string side)","returnValue":""},{"description":"Sets or resets a redstone signal on side.","method":"setOutput","parameter":"(string side, boolean value)","returnValue":""},{"description":"Returns the current redstone output signal on side.","method":"getOutput","parameter":"(string side)","returnValue":""},{"description":"(Requires CC1.51 and above) Returns the current redstone input signal strength on side. If no input is present, returns 0. If a redstone source (such as a redstone torch or block) is directly adjacent to the computer, returns 15.","method":"getAnalogInput","parameter":"(string side)","returnValue":""},{"description":"(Requires CC1.51 and above) Sets or resets a redstone signal on side to strength (where strength is a positive integer).","method":"setAnalogOutput","parameter":"(string side, number strength)","returnValue":""},{"description":"(Requires CC1.51 and above) Returns the current redstone output signal strength on side.","method":"getAnalogOutput","parameter":"(string side)","returnValue":""},{"description":"Returns the state (as a number) of a bundled cable connected to side.","method":"getBundledInput","parameter":"(string side)","returnValue":""},{"description":"Returns the set of wires in a bundled cable which are being activated by the terminal on side.","method":"getBundledOutput","parameter":"(string side)","returnValue":""},{"description":"Sets one or multiple colored signals in a bundled cable attached to side. colors will determine which signals are activated. In order to set multiple signals, add the color values of the colors you want to activate. To turn off all of the colors, use 0.","method":"setBundledOutput","parameter":"(string side, number colors)","returnValue":""},{"description":"Returns true if color is active in a bundled cable attached to side. Else, returns false.","method":"testBundledInput","parameter":"(string side, number color)","returnValue":""}]},{"childClasses":[],"className":"settings","methods":[{"description":"Sets the setting name to value.","method":"set","parameter":"(string name, any value)","returnValue":"nil"},{"description":"Returns the setting's name value, or default if the setting does not exist.","method":"get","parameter":"(string name [, any default])","returnValue":"any value"},{"description":"Removes the setting name.","method":"unset","parameter":"(string name)","returnValue":"nil"},{"description":"Removes all settings.","method":"clear","parameter":"()","returnValue":"nil"},{"description":"Returns a numerically-indexed table of all the setting's names.","method":"getNames","parameter":"()","returnValue":"table settingNames"},{"description":"Loads settings from a file.","method":"load","parameter":"(string path)","returnValue":"boolean loaded"},{"description":"Saves current settings to a file.","method":"save","parameter":"(string path)","returnValue":"boolean saved"}]},{"childClasses":[],"className":"shell","methods":[{"description":"Exits the current shell.","method":"exit","parameter":"()","returnValue":"nil"},{"description":"Returns the path to the working directory.","method":"dir","parameter":"()","returnValue":"string directory"},{"description":"Sets the working directory.","method":"setDir","parameter":"(string path)","returnValue":"nil"},{"description":"Returns the path.","method":"path","parameter":"()","returnValue":"string path"},{"description":"Sets the path.","method":"setPath","parameter":"(string path)","returnValue":"nil"},{"description":"Resolves a local path to an absolute path.","method":"resolve","parameter":"(string localPath)","returnValue":"string absolutePath"},{"description":"Resolves the absolute path to the program whose name you provided.","method":"resolveProgram","parameter":"(string name)","returnValue":"string absolutePath"},{"description":"Returns aliases.","method":"aliases","parameter":"()","returnValue":"table aliases"},{"description":"Sets an alias for program.","method":"setAlias","parameter":"(string alias, string program)","returnValue":"nil"},{"description":"Clears an alias.","method":"clearAlias","parameter":"(string alias)","returnValue":"nil"},{"description":"Returns a table of files in the current directory and in all paths in shell.path.","method":"programs","parameter":"([boolean showHidden])","returnValue":"table programs"},{"description":"Returns the absolute path to the currently-executing program.","method":"getRunningProgram","parameter":"()","returnValue":"string path"},{"description":"Runs a command (program).","method":"run","parameter":"(string command [, string args1, string args2, ...])","returnValue":"boolean success"},{"description":"Runs a program in another multishell tab. Requires version 1.6 or newer and an advanced system.","method":"openTab","parameter":"(string command [, string args1, string args2, ...])","returnValue":"number tabID"},{"description":"Switches the multishell tab to tab with the given ID. Requires version 1.6 or newer and an advanced system.","method":"switchTab","parameter":"(number tabID)","returnValue":"nil"},{"description":"Given a partial command line, returns a list of suffixes that could potentially be used to complete it. Requires version 1.74 or newer.","method":"complete","parameter":"(string prefix)","returnValue":"table completionList"},{"description":"Given a partial script / directory path, returns a list of suffixes that could potentially be used to complete it, including alias and path matches. Requires version 1.74 or newer.","method":"completeProgram","parameter":"(string prefix)","returnValue":"table completionList"},{"description":"Registers a function that determines how shell.complete() handles completion behavior for a given script. Requires version 1.74 or newer.","method":"setCompletionFunction","parameter":"(string path, function completionFunction)","returnValue":"nil"},{"description":"Returns a pointer to the table containing functions registered by shell.setCompletionFunction() for use with shell.complete(). Requires version 1.74 or newer.","method":"getCompletionInfo","parameter":"()","returnValue":"table completionFunctions"}]},{"childClasses":[],"className":"term","methods":[{"description":"Writes text to the screen, using the current text and background colors.","method":"write","parameter":"(string text)","returnValue":"nil"},{"description":"Writes text to the screen using the specified text and background colors. Requires version 1.74 or newer.","method":"blit","parameter":"(string text, string text colors, string background colors)","returnValue":"nil"},{"description":"Clears the entire screen.","method":"clear","parameter":"()","returnValue":"nil"},{"description":"Clears the line the cursor is on.","method":"clearLine","parameter":"()","returnValue":"nil"},{"description":"Returns two arguments containing the x and the y position of the cursor.","method":"getCursorPos","parameter":"()","returnValue":"number x, number y"},{"description":"Sets the cursor's position.","method":"setCursorPos","parameter":"(number x, number y)","returnValue":"nil"},{"description":"Disables the blinking or turns it on.","method":"setCursorBlink","parameter":"(boolean bool)","returnValue":"nil"},{"description":"Returns whether the terminal supports color.","method":"isColor","parameter":"()","returnValue":"boolean"},{"description":"Returns two arguments containing the x and the y values stating the size of the screen. (Good for if you're making something to be compatible with both Turtles and Computers.)","method":"getSize","parameter":"()","returnValue":"number x, number y"},{"description":"Scrolls the terminal n lines.","method":"scroll","parameter":"(number n)","returnValue":"nil"},{"description":"Redirects terminal output to another terminal object (such as a window or wrapped monitor). Available only to the base term object.","method":"redirect","parameter":"(target)","returnValue":"table previous terminal object"},{"description":"Returns the current terminal object. Requires version 1.6 or newer, available only to the base term object.","method":"current","parameter":"()","returnValue":"table terminal object"},{"description":"Returns the original terminal object. Requires version 1.6 or newer, available only to the base term object.","method":"native","parameter":"()","returnValue":"table terminal object"},{"description":"Sets the text color of the terminal. Limited functionality without an Advanced Computer / Turtle / Monitor.","method":"setTextColor","parameter":"(number color)","returnValue":"nil"},{"description":"Returns the current text color of the terminal. Requires version 1.74 or newer.","method":"getTextColor","parameter":"()","returnValue":"number color"},{"description":"Sets the background color of the terminal. Limited functionality without an Advanced Computer / Turtle / Monitor.","method":"setBackgroundColor","parameter":"(number color)","returnValue":"nil"},{"description":"Returns the current background color of the terminal. Requires version 1.74 or newer.","method":"getBackgroundColor","parameter":"()","returnValue":"number color"},{"description":"Sets the text scale. Available only to monitor objects.","method":"setTextScale","parameter":"(number scale)","returnValue":"nil"},{"description":"Determines whether subsequent renders to the window will be visible. Available only to window objects.","method":"setVisible","parameter":"(boolean visibility)","returnValue":"nil"},{"description":"Redraws the contents of the window. Available only to window objects.","method":"redraw","parameter":"()","returnValue":"nil"},{"description":"Returns the cursor back to its position / state within the window. Available only to window objects.","method":"restoreCursor","parameter":"()","returnValue":"nil"},{"description":"Returns the top left co-ordinate of the window. Available only to window objects.","method":"getPosition","parameter":"()","returnValue":"number x, number y"},{"description":"Moves and / or resizes the window. Available only to window objects.","method":"reposition","parameter":"(number x, number y [, number width, number height])","returnValue":"nil"}]},{"childClasses":[],"className":"textutils","methods":[{"description":"Writes string text at current cursor position, character-by-character. Number argument rate is optional and is defaulted to 20. The higher the value of rate, the faster text is written (passing a value of 1 writes one character per second).","method":"slowWrite","parameter":"(string text, number rate)","returnValue":"nil"},{"description":"Prints string text at current cursor position, character-by-character. Number argument rate is optional and is defaulted to 20. The higher the value of rate, the faster text is printed (passing a value of 1 prints one character per second). This function also prints a newline.","method":"slowPrint","parameter":"(string text, number rate)","returnValue":"nil"},{"description":"Takes input time and formats it in a more readable format. If the second value is true, returns time in twenty-four hour format; if the second value is false, returns time in twelve-hour format, with AM or PM. Default for twentyFourHour is false.","method":"formatTime","parameter":"(number time, boolean twentyFourHour)","returnValue":"string formattedTime"},{"description":"Prints tables in an ordered form. Each table is a row, the column width is auto-adjusted. If it encounters a number instead of a table then sets the text color to it.","method":"tabulate","parameter":"(table table/number color, table table2/number color2, ...)","returnValue":"nil"},{"description":"Prints tables in an ordered form, like textutils.tabulate. However, it waits for confirmation before scrolling down.","method":"pagedTabulate","parameter":"(table table/number color, table table2/number color2, ...)","returnValue":"nil"},{"description":"Prints string text onto the screen, but waits for confirmation (after at least freeLines have been scrolled) before scrolling down further. Default for freeLines is 0.","method":"pagedPrint","parameter":"(string text [, number freeLines])","returnValue":"number linesPrinted"},{"description":"Returns a string representation of the data data for storage or transmission. Also exists as textutils.serialise under CC 1.6 or later.","method":"serialize","parameter":"(table/string/number/boolean/nil data)","returnValue":"string serializedData"},{"description":"Returns the data reassembled from string serializedData. Used mainly together with textutils.serialize(). Also exists as textutils.unserialise under CC 1.6 or later.","method":"unserialize","parameter":"(string serializedData)","returnValue":"any unserializedData"},{"description":"Returns a JSON representation of the data data in a form of a string, mainly for command usage. Also exists as textutils.serialiseJSON. Requires CC 1.7 or later.","method":"serializeJSON","parameter":"(table/string/number/boolean data [, boolean unquote keys])","returnValue":"string serializedData"},{"description":"Makes a string safe to encode into a url. Spaces are replaced with +s. Unsafe characters such as '\\', '£' and '}' are translated into ASCII code and preceded with a % for transmission. For reference visit: [1].","method":"urlEncode","parameter":"(string urlUnsafeString)","returnValue":"string urlSafeString"},{"description":"Returns a list of strings that could be combined with the provided name to produce valid entries in the specified environment. Requires version 1.74 or later.","method":"complete","parameter":"(string partial name [, table environment])","returnValue":"table matches"}]},{"childClasses":[],"className":"turtle","methods":[{"description":"Try to move the turtle forward","method":"forward","parameter":"()","returnValue":"boolean success"},{"description":"Try to move the turtle backward","method":"back","parameter":"()","returnValue":"boolean success"},{"description":"Try to move the turtle up","method":"up","parameter":"()","returnValue":"boolean success"},{"description":"Try to move the turtle down","method":"down","parameter":"()","returnValue":"boolean success"},{"description":"Turn the turtle left","method":"turnLeft","parameter":"()","returnValue":"boolean success"},{"description":"Turn the turtle right","method":"turnRight","parameter":"()","returnValue":"boolean success"},{"description":"Make the turtle select slot slotNum (1 is top left, 16 (9 in 1.33 and earlier) is bottom right)","method":"select","parameter":"(number slotNum)","returnValue":"boolean success"},{"description":"Indicates the currently selected inventory slot","method":"getSelectedSlot","parameter":"()","returnValue":"number slot"},{"description":"Counts how many items are in the currently selected slot or, if specified, slotNum slot","method":"getItemCount","parameter":"([number slotNum])","returnValue":"number count"},{"description":"Counts how many remaining items you need to fill the stack in the currently selected slot or, if specified, slotNum slot","method":"getItemSpace","parameter":"([number slotNum])","returnValue":"number count"},{"description":"Returns the ID string, count and damage values of currently selected slot or, if specified, slotNum slot","method":"getItemDetail","parameter":"([number slotNum])","returnValue":"table data"},{"description":"Attempts to equip an item in the current slot to the turtle's left side, switching the previously equipped item back into the inventory","method":"equipLeft","parameter":"()","returnValue":"boolean success"},{"description":"Attempts to equip an item in the current slot to the turtle's right side, switching the previously equipped item back into the inventory","method":"equipRight","parameter":"()","returnValue":"boolean success"},{"description":"Attacks in front of the turtle.","method":"attack","parameter":"()","returnValue":"boolean success"},{"description":"Attacks above the turtle.","method":"attackUp","parameter":"()","returnValue":"boolean success"},{"description":"Attacks under the turtle.","method":"attackDown","parameter":"()","returnValue":"boolean success"},{"description":"Breaks the block in front. With hoe: tills the dirt in front of it.","method":"dig","parameter":"()","returnValue":"boolean success"},{"description":"Breaks the block above. With hoe: tills the dirt above it.","method":"digUp","parameter":"()","returnValue":"boolean success"},{"description":"Breaks the block below. With hoe: tills the dirt below it.","method":"digDown","parameter":"()","returnValue":"boolean success"},{"description":"Places a block of the selected slot in front. Engrave signText on signs if provided. Collects water or lava if the currently selected slot is an empty bucket.","method":"place","parameter":"([string signText])","returnValue":"boolean success"},{"description":"Places a block of the selected slot above. Collects water or lava if the currently selected slot is an empty bucket.","method":"placeUp","parameter":"()","returnValue":"boolean success"},{"description":"Places a block of the selected slot below. Collects water or lava if the currently selected slot is an empty bucket.","method":"placeDown","parameter":"()","returnValue":"boolean success"},{"description":"Detects if there is a block in front. Does not detect mobs.","method":"detect","parameter":"()","returnValue":"boolean result"},{"description":"Detects if there is a block above","method":"detectUp","parameter":"()","returnValue":"boolean result"},{"description":"Detects if there is a block below","method":"detectDown","parameter":"()","returnValue":"boolean result"},{"description":"Returns the ID string and metadata of the block in front of the Turtle","method":"inspect","parameter":"()","returnValue":"boolean success, table data/string error message"},{"description":"Returns the ID string and metadata of the block above the Turtle","method":"inspectUp","parameter":"()","returnValue":"boolean success, table data/string error message"},{"description":"Returns the ID string and metadata of the block below the Turtle","method":"inspectDown","parameter":"()","returnValue":"boolean success, table data/string error message"},{"description":"Detects if the block in front is the same as the one in the currently selected slot","method":"compare","parameter":"()","returnValue":"boolean result"},{"description":"Detects if the block above is the same as the one in the currently selected slot","method":"compareUp","parameter":"()","returnValue":"boolean result"},{"description":"Detects if the block below is the same as the one in the currently selected slot","method":"compareDown","parameter":"()","returnValue":"boolean result"},{"description":"Compare the current selected slot and the given slot to see if the items are the same. Returns true if they are the same, false if not.","method":"compareTo","parameter":"(number slot)","returnValue":"boolean result"},{"description":"Drops all items in the selected slot, or specified, drops count items. [>= 1.4 only:] If there is a inventory on the side (i.e in front of the turtle) it will try to place into the inventory, returning false if the inventory is full.","method":"drop","parameter":"([number count])","returnValue":"boolean success"},{"description":"Drops all items in the selected slot, or specified, drops count items. [>= 1.4 only:] If there is a inventory on the side (i.e above the turtle) it will try to place into the inventory, returning false if the inventory is full.","method":"dropUp","parameter":"([number count])","returnValue":"boolean success"},{"description":"Drops all items in the selected slot, or specified, drops count items. [>= 1.4 only:] If there is a inventory on the side (i.e below the turtle) it will try to place into the inventory, returning false if the inventory is full. If above a furnace, will place item in the top slot.","method":"dropDown","parameter":"([number count])","returnValue":"boolean success"},{"description":"Picks up an item stack of any number, from the ground or an inventory in front of the turtle, then places it in the selected slot. If the turtle can't pick up the item, the function returns false. amount parameter requires ComputerCraft 1.6 or later.","method":"suck","parameter":"([number amount])","returnValue":"boolean success"},{"description":"Picks up an item stack of any number, from the ground or an inventory above the turtle, then places it in the selected slot. If the turtle can't pick up the item, the function returns false. amount parameter requires ComputerCraft 1.6 or later.","method":"suckUp","parameter":"([number amount])","returnValue":"boolean success"},{"description":"Picks up an item stack of any number, from the ground or an inventory below the turtle, then places it in the selected slot. If the turtle can't pick up the item, the function returns false. amount parameter requires ComputerCraft 1.6 or later.","method":"suckDown","parameter":"([number amount])","returnValue":"boolean success"},{"description":"If the current selected slot contains a fuel item, it will consume it to give the turtle the ability to move. Added in 1.4 and is only needed in needfuel mode. If the current slot doesn't contain a fuel item, it returns false. Fuel values for different items can be found at Turtle.refuel#Fuel_Values. If a quantity is specified, it will refuel only up to that many items, otherwise, it will consume all the items in the slot.","method":"refuel","parameter":"([number quantity])","returnValue":"boolean success"},{"description":"Returns the current fuel level of the turtle, this is the number of blocks the turtle can move. If turtleNeedFuel = 0 then it returns \"unlimited\".","method":"getFuelLevel","parameter":"()","returnValue":"number fuel"},{"description":"Returns the maximum amount of fuel a turtle can store - by default, 20,000 for regular turtles, 100,000 for advanced. If turtleNeedFuel = 0 then it returns \"unlimited\".","method":"getFuelLimit","parameter":"()","returnValue":"number fuel"},{"description":"Transfers quantity items from the selected slot to slot. If quantity isn't specified, will attempt to transfer everything in the selected slot to slot.","method":"transferTo","parameter":"(number slot [, number quantity])","returnValue":"boolean success"}]},{"childClasses":[],"className":"vector","methods":[{"description":"Creates a vector.","method":"new","parameter":"(number x, number y, number z)","returnValue":""}]},{"childClasses":[],"className":"window","methods":[{"description":"Creates and returns a new window object, similar to a wrapped monitor. Refer to the term API for a list of functions attached to it.","method":"create","parameter":"(table parentTerm, number x, number y, number width, number height [, boolean visible])","returnValue":"table windowObject"}]}],"className":"root","methods":[]}
+{
+    "childClasses": [{
+        "childClasses": [],
+        "className": "bit",
+        "methods": [{
+            "description": "Shifts a number left by a specified number of bits.",
+            "method": "blshift",
+            "parameter": "(number n, number bits)",
+            "returnValue": "number value"
+        }, {
+            "description": "Shifts a number right arithmetically by a specified number of bits.",
+            "method": "brshift",
+            "parameter": "(number n, number bits)",
+            "returnValue": "number value"
+        }, {
+            "description": "Shifts a number right logically by a specified number of bits.",
+            "method": "blogic_rshift",
+            "parameter": "(number n, number bits)",
+            "returnValue": "number value"
+        }, {
+            "description": "Computes the bitwise exclusive OR of two numbers.",
+            "method": "bxor",
+            "parameter": "(number m, number n)",
+            "returnValue": "number value"
+        }, {
+            "description": "Computes the bitwise inclusive OR of two numbers.",
+            "method": "bor",
+            "parameter": "(number m, number n)",
+            "returnValue": "number value"
+        }, {
+            "description": "Computes the bitwise AND of two numbers.",
+            "method": "band",
+            "parameter": "(number m, number n)",
+            "returnValue": "number value"
+        }, {
+            "description": "Computes the bitwise NOT of a number.",
+            "method": "bnot",
+            "parameter": "(number n)",
+            "returnValue": "number value"
+        }]
+    }, {
+        "childClasses": [],
+        "className": "colors",
+        "methods": [{
+            "description": "Combines one or more colors (or sets of colors) into a larger set.",
+            "method": "combine",
+            "parameter": "(number color1, number color2, ...)",
+            "returnValue": "number value"
+        }, {
+            "description": "Removes one or more colors (or sets of colors) from an initial set.",
+            "method": "subtract",
+            "parameter": "(number colors, number color1, number color2, ...)",
+            "returnValue": "number value"
+        }, {
+            "description": "Tests whether color is contained within colors.",
+            "method": "test",
+            "parameter": "(number colors, number color)",
+            "returnValue": "boolean contained"
+        }]
+    }, {
+        "childClasses": [],
+        "className": "commands",
+        "methods": [{
+            "description": "Executes the specified command, yields until the result is determined, then returns it.",
+            "method": "exec",
+            "parameter": "(string command)",
+            "returnValue": "boolean success, table output"
+        }, {
+            "description": "Executes the specified command, but doesn't yield. Queues a \"task_complete\" event after the command is executed.",
+            "method": "execAsync",
+            "parameter": "(string command)",
+            "returnValue": "number taskID"
+        }, {
+            "description": "Returns a numerically indexed table filled with strings representing acceptable commands for commands.exec() / commands.execAsync().",
+            "method": "list",
+            "parameter": "()",
+            "returnValue": "table commands"
+        }, {
+            "description": "Returns the Minecraft world coordinates of the computer running the command.",
+            "method": "getBlockPosition",
+            "parameter": "()",
+            "returnValue": "number x, number y, number z"
+        }, {
+            "description": "Returns a table containing info about the block at the specified world location. Keys are \"name\" (a string) and \"metadata\" (a number).",
+            "method": "getBlockInfo",
+            "parameter": "(number x, number y, number z)",
+            "returnValue": "table block info"
+        }, {
+            "description": "Returns a table containing sub-tables with info about the blocks within the specified world locations. Added by CC 1.76",
+            "method": "getBlockInfos",
+            "parameter": "(number x1, number y1, number z1, number x2, number y2, number z2)",
+            "returnValue": "table blocks info"
+        }]
+    }, {
+        "childClasses": [],
+        "className": "coroutine",
+        "methods": [{
+            "description": "Creates a new coroutine.",
+            "method": "create",
+            "parameter": "(function f)",
+            "returnValue": "coroutine coro"
+        }, {
+            "description": "Starts or resumes a coroutine.",
+            "method": "resume",
+            "parameter": "(coroutine coro, ...)",
+            "returnValue": "any"
+        }, {
+            "description": "Returns the currently executing coroutine.",
+            "method": "running",
+            "parameter": "()",
+            "returnValue": "coroutine"
+        }, {
+            "description": "Returns the status of a coroutine.",
+            "method": "status",
+            "parameter": "(coroutine coro)",
+            "returnValue": "string status"
+        }, {
+            "description": "Creates a new coroutine and wraps it in a function.",
+            "method": "wrap",
+            "parameter": "(function f)",
+            "returnValue": "function wrapper"
+        }, {
+            "description": "Pauses the currently executing coroutine and passes control to its caller.",
+            "method": "yield",
+            "parameter": "(...)",
+            "returnValue": "any"
+        }]
+    }, {
+        "childClasses": [],
+        "className": "disk",
+        "methods": [{
+            "description": "Checks whether any item is in a disk drive.",
+            "method": "isPresent",
+            "parameter": "(string side)",
+            "returnValue": "boolean present"
+        }, {
+            "description": "Checks whether a Floppy Disk is in a disk drive.",
+            "method": "hasData",
+            "parameter": "(string side)",
+            "returnValue": "boolean hasData"
+        }, {
+            "description": "Gets the directory name where the contents of the floppy disk can be accessed.",
+            "method": "getMountPath",
+            "parameter": "(string side)",
+            "returnValue": "string/nil path"
+        }, {
+            "description": "Sets the floppy disk's label.",
+            "method": "setLabel",
+            "parameter": "(string side, string label)",
+            "returnValue": "nil"
+        }, {
+            "description": "Gets the floppy disk's label.",
+            "method": "getLabel",
+            "parameter": "(string side)",
+            "returnValue": "string/nil label"
+        }, {
+            "description": "Gets the floppy disk's unique ID number.",
+            "method": "getID",
+            "parameter": "(string side)",
+            "returnValue": "number/nil id"
+        }, {
+            "description": "Checks whether a music disk is in the drive.",
+            "method": "hasAudio",
+            "parameter": "(string side)",
+            "returnValue": "boolean hasAudio"
+        }, {
+            "description": "Gets the title of the music disc in the drive.",
+            "method": "getAudioTitle",
+            "parameter": "(string side)",
+            "returnValue": "string/nil title"
+        }, {
+            "description": "Starts playing the music disc in the drive.",
+            "method": "playAudio",
+            "parameter": "(string side)",
+            "returnValue": "nil"
+        }, {
+            "description": "Stops playing the music disc in the drive.",
+            "method": "stopAudio",
+            "parameter": "(string side)",
+            "returnValue": "nil"
+        }, {
+            "description": "Ejects any item currently in the drive, spilling it into the world as a loose item.",
+            "method": "eject",
+            "parameter": "(string side)",
+            "returnValue": "nil"
+        }]
+    }, {
+        "childClasses": [],
+        "className": "fs",
+        "methods": [{
+            "description": "Returns a list of all the files (including subdirectories but not their contents) contained in a directory, as a numerically indexed table.",
+            "method": "list",
+            "parameter": "(string path)",
+            "returnValue": "table files"
+        }, {
+            "description": "Checks if a path refers to an existing file or directory.",
+            "method": "exists",
+            "parameter": "(string path)",
+            "returnValue": "boolean exists"
+        }, {
+            "description": "Checks if a path refers to an existing directory.",
+            "method": "isDir",
+            "parameter": "(string path)",
+            "returnValue": "boolean isDirectory"
+        }, {
+            "description": "Checks if a path is read-only (i.e. cannot be modified).",
+            "method": "isReadOnly",
+            "parameter": "(string path)",
+            "returnValue": "boolean readonly"
+        }, {
+            "description": "Gets the final component of a pathname.",
+            "method": "getName",
+            "parameter": "(string path)",
+            "returnValue": "string name"
+        }, {
+            "description": "Gets the storage medium holding a path, or nil if the path does not exist.",
+            "method": "getDrive",
+            "parameter": "(string path)",
+            "returnValue": "string/nil drive"
+        }, {
+            "description": "Gets the size of a file in bytes.",
+            "method": "getSize",
+            "parameter": "(string path)",
+            "returnValue": "number size"
+        }, {
+            "description": "Gets the remaining space on the drive containing the given directory.",
+            "method": "getFreeSpace",
+            "parameter": "(string path)",
+            "returnValue": "number space"
+        }, {
+            "description": "Makes a directory.",
+            "method": "makeDir",
+            "parameter": "(string path)",
+            "returnValue": "nil"
+        }, {
+            "description": "Moves a file or directory to a new location.",
+            "method": "move",
+            "parameter": "(string fromPath, string toPath)",
+            "returnValue": "nil"
+        }, {
+            "description": "Copies a file or directory to a new location.",
+            "method": "copy",
+            "parameter": "(string fromPath, string toPath)",
+            "returnValue": "nil"
+        }, {
+            "description": "Deletes a file or directory.",
+            "method": "delete",
+            "parameter": "(string path)",
+            "returnValue": "nil"
+        }, {
+            "description": "Combines two path components, returning a path consisting of the local path nested inside the base path.",
+            "method": "combine",
+            "parameter": "(string basePath, string localPath)",
+            "returnValue": "string path"
+        }, {
+            "description": "Opens a file so it can be read or written.",
+            "method": "open",
+            "parameter": "(string path, string mode)",
+            "returnValue": "table handle"
+        }, {
+            "description": "Searches the computer's files using wildcards. Requires version 1.6 or later.",
+            "method": "find",
+            "parameter": "(string wildcard)",
+            "returnValue": "table files"
+        }, {
+            "description": "Returns the parent directory of path. Requires version 1.63 or later.",
+            "method": "getDir",
+            "parameter": "(string path)",
+            "returnValue": "string parentDirectory"
+        }, {
+            "description": "Returns a list of strings that could be combined with the provided name to produce valid entries in the specified folder. Requires version 1.74 or later.",
+            "method": "complete",
+            "parameter": "(string partial name, string path [, boolean include files] [, boolean include slashes])",
+            "returnValue": "table matches"
+        }]
+    }, {
+        "childClasses": [],
+        "className": "gps",
+        "methods": [{
+            "description": "Tries to retrieve the computer or turtles own location. On success, returns the location of the turtle’s modem. On failure (if no responses are received for timeout seconds, by default 2), returns nil. If debug is true, debug messages are printed.",
+            "method": "locate",
+            "parameter": "([number timeout [, boolean debug]])",
+            "returnValue": "(number x, number y, number z) or nil"
+        }]
+    }, {
+        "childClasses": [],
+        "className": "help",
+        "methods": [{
+            "description": "Returns the list of locations the API will look in for help files.",
+            "method": "path",
+            "parameter": "()",
+            "returnValue": "string path"
+        }, {
+            "description": "Sets the list of locations the API will look in for help files.",
+            "method": "setPath",
+            "parameter": "(string path)",
+            "returnValue": "nil"
+        }, {
+            "description": "Returns the path to the file containing the help page for topic, or nil if the topic cannot be found.",
+            "method": "lookup",
+            "parameter": "(string topic)",
+            "returnValue": "string/nil path"
+        }, {
+            "description": "Returns a list of all available help topics.",
+            "method": "topics",
+            "parameter": "()",
+            "returnValue": "table topics"
+        }, {
+            "description": "Returns a list of suffixes that can be concatenated with the prefix to get valid topic titles. Requires CC 1.74 or later.",
+            "method": "completeTopic",
+            "parameter": "(string topic prefix)",
+            "returnValue": "table topic suffixes"
+        }]
+    }, {
+        "childClasses": [],
+        "className": "http",
+        "methods": [{
+            "description": "Sends a HTTP request to a website, asynchronously.",
+            "method": "request",
+            "parameter": "(string url [, string postData [, table headers]])",
+            "returnValue": "nil"
+        }, {
+            "description": "Sends a HTTP GET request to a website, synchronously.",
+            "method": "get",
+            "parameter": "(string url [, table headers])",
+            "returnValue": "table handle"
+        }, {
+            "description": "Sends a HTTP POST request to a website, synchronously.",
+            "method": "post",
+            "parameter": "(string url, string postData [, table headers])",
+            "returnValue": "table handle"
+        }, {
+            "description": "Checks if a URL is valid and is included in the HTTP whitelist.",
+            "method": "checkURL",
+            "parameter": "(string url)",
+            "returnValue": "boolean success [, string error]"
+        }]
+    }, {
+        "childClasses": [],
+        "className": "keys",
+        "methods": [{
+            "description": "Translates a numerical key code to a human-readable name.",
+            "method": "getName",
+            "parameter": "(number code)",
+            "returnValue": "string keyName"
+        }]
+    }, {
+        "childClasses": [],
+        "className": "multishell",
+        "methods": [{
+            "description": "Returns the ID of the currently running tab.",
+            "method": "getCurrent",
+            "parameter": "()",
+            "returnValue": "number tabID"
+        }, {
+            "description": "Returns the number of tabs currently being handled by the multishell system.",
+            "method": "getCount",
+            "parameter": "()",
+            "returnValue": "number tabCount"
+        }, {
+            "description": "Launches the specified script in a new tab.",
+            "method": "launch",
+            "parameter": "(table environment, string program path [, string arguments])",
+            "returnValue": "number newTabID"
+        }, {
+            "description": "Switches focus to the specified tab.",
+            "method": "setFocus",
+            "parameter": "(number tabID)",
+            "returnValue": "boolean success"
+        }, {
+            "description": "Relabels the specified tab to use the specified title.",
+            "method": "setTitle",
+            "parameter": "(number tabID, string title)",
+            "returnValue": ""
+        }, {
+            "description": "Returns the title of the specified tab.",
+            "method": "getTitle",
+            "parameter": "(number tabID)",
+            "returnValue": "string title"
+        }, {
+            "description": "Returns the ID of the currently focused tab.",
+            "method": "getFocus",
+            "parameter": "()",
+            "returnValue": "number tabID"
+        }]
+    }, {
+        "childClasses": [],
+        "className": "os",
+        "methods": [{
+            "description": "Returns the version of the OS the computer is running, which (for CraftOS) also contains the version of ComputerCraft.",
+            "method": "version",
+            "parameter": "()",
+            "returnValue": "string version"
+        }, {
+            "description": "Returns the unique ID of this computer. os.computerID() also behaves exactly the same as os.getComputerID().",
+            "method": "getComputerID",
+            "parameter": "()",
+            "returnValue": "number id"
+        }, {
+            "description": "Returns the label of this computer. os.computerLabel() also behaves exactly the same as os.getComputerLabel().",
+            "method": "getComputerLabel",
+            "parameter": "()",
+            "returnValue": "string/nil label"
+        }, {
+            "description": "Set the label of this computer.",
+            "method": "setComputerLabel",
+            "parameter": "(string/nil label)",
+            "returnValue": "nil"
+        }, {
+            "description": "An advanced way of starting programs. A started program will have a given environment table which determines what functions it has available, as well as any variables it will be able to access by default. You may prefer to use the Shell (API) unless you need to do something special.",
+            "method": "run",
+            "parameter": "(table environment, string programPath [, string arguments])",
+            "returnValue": "boolean success"
+        }, {
+            "description": "Loads a Lua script as an API in its own namespace. It will be available to all programs that run on the terminal.",
+            "method": "loadAPI",
+            "parameter": "(string path)",
+            "returnValue": "boolean success"
+        }, {
+            "description": "Unloads a previously loaded API.",
+            "method": "unloadAPI",
+            "parameter": "(string name)",
+            "returnValue": "nil"
+        }, {
+            "description": "Blocks until the computer receives an event, or if target-event is specified, will block until an instance of target-event occurs. os.pullEvent(target-event) returns the event and any parameters the event may have. If a target-event is specified, the computer will not break for any other events (except termination).",
+            "method": "pullEvent",
+            "parameter": "([string target-event])",
+            "returnValue": "string event, param1, param2, ..."
+        }, {
+            "description": "Advanced version of pullEvent(). Blocks until the computer receives an event, or if target-event is specified, will block until an instance of target-event occurs. os.pullEventRaw(target-event) returns the event and any parameters the event may have. Unlike os.pullEvent(target-event), this function will not raise an error if a 'terminate' event is received.",
+            "method": "pullEventRaw",
+            "parameter": "([string target-event])",
+            "returnValue": "string event, param1, param2, ..."
+        }, {
+            "description": "Adds an event to the event queue with the name event and the given parameters.",
+            "method": "queueEvent",
+            "parameter": "(string event, param1, param2, ...)",
+            "returnValue": "nil"
+        }, {
+            "description": "Returns the amount of time since the in-game computer was started.",
+            "method": "clock",
+            "parameter": "()",
+            "returnValue": "number time"
+        }, {
+            "description": "Queues an event to be triggered after a number of seconds (timeout). The ID of the timer is returned from this function to differentiate multiple timers. Timers are one-shot; once they have fired an event you will need to start another one if you need a recurring timer.",
+            "method": "startTimer",
+            "parameter": "(number timeout)",
+            "returnValue": "number timerID"
+        }, {
+            "description": "Cancels a running timer, to prevent it throwing an event.",
+            "method": "cancelTimer",
+            "parameter": "(number timerID)",
+            "returnValue": "nil"
+        }, {
+            "description": "Returns the current in-game time.",
+            "method": "time",
+            "parameter": "()",
+            "returnValue": "number time"
+        }, {
+            "description": "Makes the system wait a number of seconds before continuing in the program. os.sleep(time) may also be used as simply \"sleep(time)\".",
+            "method": "sleep",
+            "parameter": "(number time)",
+            "returnValue": "nil"
+        }, {
+            "description": "Return the current in-game day (the number of in-game days since the world was created).",
+            "method": "day",
+            "parameter": "()",
+            "returnValue": "number day"
+        }, {
+            "description": "Queues an event to be triggered at the specified in-game time.",
+            "method": "setAlarm",
+            "parameter": "(number time)",
+            "returnValue": "number alarmID"
+        }, {
+            "description": "Cancels a pending alarm, to prevent it throwing an event.",
+            "method": "cancelAlarm",
+            "parameter": "(number alarmID)",
+            "returnValue": "nil"
+        }, {
+            "description": "Turns off the computer.",
+            "method": "shutdown",
+            "parameter": "()",
+            "returnValue": "nil"
+        }, {
+            "description": "Reboots the computer.",
+            "method": "reboot",
+            "parameter": "()",
+            "returnValue": "nil"
+        }]
+    }, {
+        "childClasses": [],
+        "className": "paintutils",
+        "methods": [{
+            "description": "Loads and returns an image object from path.",
+            "method": "loadImage",
+            "parameter": "(string path)",
+            "returnValue": "table image"
+        }, {
+            "description": "Draws an image at (x, y) where image is an image object.",
+            "method": "drawImage",
+            "parameter": "(table image, number x, number y)",
+            "returnValue": "nil"
+        }, {
+            "description": "Draws a pixel at (x, y) in the specified color.",
+            "method": "drawPixel",
+            "parameter": "(number x, number y [, number color*])",
+            "returnValue": "nil"
+        }, {
+            "description": "Draws a line from (startX, startY) to (endX, endY) in the specified color.",
+            "method": "drawLine",
+            "parameter": "(number startX, number startY, number endX, number endY [, number color*])",
+            "returnValue": "nil"
+        }, {
+            "description": "Draws a box from (startX, startY) to (endX, endY) in the specified color. Requires version 1.64 or newer.",
+            "method": "drawBox",
+            "parameter": "(number startX, number startY, number endX, number endY [, number color])",
+            "returnValue": "nil"
+        }, {
+            "description": "Draws a filled box from (startX, startY) to (endX, endY) in the specified color. Requires version 1.64 or newer.",
+            "method": "drawFilledBox",
+            "parameter": "(number startX, number startY, number endX, number endY [, number color])",
+            "returnValue": "nil"
+        }]
+    }, {
+        "childClasses": [],
+        "className": "parallel",
+        "methods": [{
+            "description": "Runs all the functions at the same time, and stops when any of them returns.",
+            "method": "waitForAny",
+            "parameter": "(function function1, function function2, ...)",
+            "returnValue": "number stoppedFunction"
+        }, {
+            "description": "Runs all the functions at the same time, and stops when all of them have returned.",
+            "method": "waitForAll",
+            "parameter": "(function function1, function function2, ...)",
+            "returnValue": "nil"
+        }]
+    }, {
+        "childClasses": [],
+        "className": "peripheral",
+        "methods": [{
+            "description": "Returns true if a peripheral is connected on side.",
+            "method": "isPresent",
+            "parameter": "(string side)",
+            "returnValue": "boolean"
+        }, {
+            "description": "Returns the type of peripheral connected on side, as a string. If no peripheral is connected, returns nil.",
+            "method": "getType",
+            "parameter": "(string side)",
+            "returnValue": "string /nil"
+        }, {
+            "description": "Returns a list of the names of all the methods of the peripheral connected on side. If no peripheral is connected, returns nil.",
+            "method": "getMethods",
+            "parameter": "(string side)",
+            "returnValue": "table /nil"
+        }, {
+            "description": "Calls a method on a peripheral. The arguments (apart from side and method) and the return values depend on the method being called. If no peripheral is connected, returns nil.",
+            "method": "call",
+            "parameter": "(string side, string method, ...)",
+            "returnValue": "any"
+        }, {
+            "description": "Returns a table of functions, allowing you to call peripheral methods as if they were normal Lua functions. If no peripheral is connected, returns nil.",
+            "method": "wrap",
+            "parameter": "(string side)",
+            "returnValue": "table peripheral / nil"
+        }, {
+            "description": "Finds an attached peripheral of the given type and if found returns a table of functions, similar to peripheral.wrap, allowing you to call peripheral methods as if they were normal Lua functions. If no peripheral of the given type is connected, it returns nil. Requires ComputerCraft 1.6 or later.",
+            "method": "find",
+            "parameter": "(string type [, function fnFilter( name, object )])",
+            "returnValue": "table peripheral / nil"
+        }, {
+            "description": "This function returns a table of all the sides that have a peripheral present. If the present peripheral is a wired modem any names of the peripherals that is on the network are also added to the table.",
+            "method": "getNames",
+            "parameter": "()",
+            "returnValue": "table"
+        }]
+    }, {
+        "childClasses": [],
+        "className": "rednet",
+        "methods": [{
+            "description": "Tells the computer that the side can be used for networking.",
+            "method": "open",
+            "parameter": "(string side)",
+            "returnValue": "nil"
+        }, {
+            "description": "Tells the computer that the side can no longer be used for networking.",
+            "method": "close",
+            "parameter": "(string side)",
+            "returnValue": "nil"
+        }, {
+            "description": "Sends a message \"intended\" for another system with a specific ID, using the currently opened sides. The receiverID is the ID number (note - not a string) of the computer you're sending the message to. The types that can be sent as the message vary depending on the version of ComputerCraft in use.",
+            "method": "send",
+            "parameter": "(number receiverID, any message, [string protocol])",
+            "returnValue": "nil"
+        }, {
+            "description": "Sends the message to all connected and open computers.",
+            "method": "broadcast",
+            "parameter": "(any message, [string protocol])",
+            "returnValue": "nil"
+        }, {
+            "description": "Waits until a rednet message of the specified protocol has been received, or until timeout seconds have passed. Leave all arguments empty to wait for any message indefinitely. If only a single, numerical argument is passed, will wait that many seconds for a message of any protocol. Versions of ComputerCraft prior to 1.6 may return the distance to the transmitting computer - 1.6 or later returns message protocols instead, though distance can still be obtained via direct use of the Modem API.",
+            "method": "receive",
+            "parameter": "([ [string protocolFilter, ] number timeout])",
+            "returnValue": "number senderID, any message, number distance / string protocol"
+        }, {
+            "description": "Returns true if the wireless modem is open.",
+            "method": "isOpen",
+            "parameter": "(string side)",
+            "returnValue": "boolean isOpen"
+        }, {
+            "description": "Registers hostname against protocol for the purposes of rednet.lookup(). Only available in ComputerCraft 1.6 and above.",
+            "method": "host",
+            "parameter": "(string protocol, string hostname)",
+            "returnValue": "nil"
+        }, {
+            "description": "Unregisters hostname from protocol. Only available in ComputerCraft 1.6 and above.",
+            "method": "unhost",
+            "parameter": "(string protocol, string hostname)",
+            "returnValue": "nil"
+        }, {
+            "description": "Searches the local network for systems registered with a matching hostname and/or protocol, and returns matching IDs found. Only available in ComputerCraft 1.6 and above.",
+            "method": "lookup",
+            "parameter": "(string protocol, string hostname)",
+            "returnValue": "number ID1, number ID2, ..."
+        }, {
+            "description": "Internal use function - runs automatically and does not need to be called directly. Waits for modem_message events to appear within the event queue and generates corresponding rednet_message events for use with this API. Also responds to rednet.lookup() requests.",
+            "method": "run",
+            "parameter": "()",
+            "returnValue": "nil"
+        }]
+    }, {
+        "childClasses": [],
+        "className": "redstone",
+        "methods": [{
+            "description": "Returns a table of possible sides.",
+            "method": "getSides",
+            "parameter": "()",
+            "returnValue": ""
+        }, {
+            "description": "Returns the current redstone input signal state on side.",
+            "method": "getInput",
+            "parameter": "(string side)",
+            "returnValue": ""
+        }, {
+            "description": "Sets or resets a redstone signal on side.",
+            "method": "setOutput",
+            "parameter": "(string side, boolean value)",
+            "returnValue": ""
+        }, {
+            "description": "Returns the current redstone output signal on side.",
+            "method": "getOutput",
+            "parameter": "(string side)",
+            "returnValue": ""
+        }, {
+            "description": "(Requires CC1.51 and above) Returns the current redstone input signal strength on side. If no input is present, returns 0. If a redstone source (such as a redstone torch or block) is directly adjacent to the computer, returns 15.",
+            "method": "getAnalogInput",
+            "parameter": "(string side)",
+            "returnValue": ""
+        }, {
+            "description": "(Requires CC1.51 and above) Sets or resets a redstone signal on side to strength (where strength is a positive integer).",
+            "method": "setAnalogOutput",
+            "parameter": "(string side, number strength)",
+            "returnValue": ""
+        }, {
+            "description": "(Requires CC1.51 and above) Returns the current redstone output signal strength on side.",
+            "method": "getAnalogOutput",
+            "parameter": "(string side)",
+            "returnValue": ""
+        }, {
+            "description": "Returns the state (as a number) of a bundled cable connected to side.",
+            "method": "getBundledInput",
+            "parameter": "(string side)",
+            "returnValue": ""
+        }, {
+            "description": "Returns the set of wires in a bundled cable which are being activated by the terminal on side.",
+            "method": "getBundledOutput",
+            "parameter": "(string side)",
+            "returnValue": ""
+        }, {
+            "description": "Sets one or multiple colored signals in a bundled cable attached to side. colors will determine which signals are activated. In order to set multiple signals, add the color values of the colors you want to activate. To turn off all of the colors, use 0.",
+            "method": "setBundledOutput",
+            "parameter": "(string side, number colors)",
+            "returnValue": ""
+        }, {
+            "description": "Returns true if color is active in a bundled cable attached to side. Else, returns false.",
+            "method": "testBundledInput",
+            "parameter": "(string side, number color)",
+            "returnValue": ""
+        }]
+    }, {
+        "childClasses": [],
+        "className": "settings",
+        "methods": [{
+            "description": "Sets the setting name to value.",
+            "method": "set",
+            "parameter": "(string name, any value)",
+            "returnValue": "nil"
+        }, {
+            "description": "Returns the setting's name value, or default if the setting does not exist.",
+            "method": "get",
+            "parameter": "(string name [, any default])",
+            "returnValue": "any value"
+        }, {
+            "description": "Removes the setting name.",
+            "method": "unset",
+            "parameter": "(string name)",
+            "returnValue": "nil"
+        }, {
+            "description": "Removes all settings.",
+            "method": "clear",
+            "parameter": "()",
+            "returnValue": "nil"
+        }, {
+            "description": "Returns a numerically-indexed table of all the setting's names.",
+            "method": "getNames",
+            "parameter": "()",
+            "returnValue": "table settingNames"
+        }, {
+            "description": "Loads settings from a file.",
+            "method": "load",
+            "parameter": "(string path)",
+            "returnValue": "boolean loaded"
+        }, {
+            "description": "Saves current settings to a file.",
+            "method": "save",
+            "parameter": "(string path)",
+            "returnValue": "boolean saved"
+        }]
+    }, {
+        "childClasses": [],
+        "className": "shell",
+        "methods": [{
+            "description": "Exits the current shell.",
+            "method": "exit",
+            "parameter": "()",
+            "returnValue": "nil"
+        }, {
+            "description": "Returns the path to the working directory.",
+            "method": "dir",
+            "parameter": "()",
+            "returnValue": "string directory"
+        }, {
+            "description": "Sets the working directory.",
+            "method": "setDir",
+            "parameter": "(string path)",
+            "returnValue": "nil"
+        }, {
+            "description": "Returns the path.",
+            "method": "path",
+            "parameter": "()",
+            "returnValue": "string path"
+        }, {
+            "description": "Sets the path.",
+            "method": "setPath",
+            "parameter": "(string path)",
+            "returnValue": "nil"
+        }, {
+            "description": "Resolves a local path to an absolute path.",
+            "method": "resolve",
+            "parameter": "(string localPath)",
+            "returnValue": "string absolutePath"
+        }, {
+            "description": "Resolves the absolute path to the program whose name you provided.",
+            "method": "resolveProgram",
+            "parameter": "(string name)",
+            "returnValue": "string absolutePath"
+        }, {
+            "description": "Returns aliases.",
+            "method": "aliases",
+            "parameter": "()",
+            "returnValue": "table aliases"
+        }, {
+            "description": "Sets an alias for program.",
+            "method": "setAlias",
+            "parameter": "(string alias, string program)",
+            "returnValue": "nil"
+        }, {
+            "description": "Clears an alias.",
+            "method": "clearAlias",
+            "parameter": "(string alias)",
+            "returnValue": "nil"
+        }, {
+            "description": "Returns a table of files in the current directory and in all paths in shell.path.",
+            "method": "programs",
+            "parameter": "([boolean showHidden])",
+            "returnValue": "table programs"
+        }, {
+            "description": "Returns the absolute path to the currently-executing program.",
+            "method": "getRunningProgram",
+            "parameter": "()",
+            "returnValue": "string path"
+        }, {
+            "description": "Runs a command (program).",
+            "method": "run",
+            "parameter": "(string command [, string args1, string args2, ...])",
+            "returnValue": "boolean success"
+        }, {
+            "description": "Runs a program in another multishell tab. Requires version 1.6 or newer and an advanced system.",
+            "method": "openTab",
+            "parameter": "(string command [, string args1, string args2, ...])",
+            "returnValue": "number tabID"
+        }, {
+            "description": "Switches the multishell tab to tab with the given ID. Requires version 1.6 or newer and an advanced system.",
+            "method": "switchTab",
+            "parameter": "(number tabID)",
+            "returnValue": "nil"
+        }, {
+            "description": "Given a partial command line, returns a list of suffixes that could potentially be used to complete it. Requires version 1.74 or newer.",
+            "method": "complete",
+            "parameter": "(string prefix)",
+            "returnValue": "table completionList"
+        }, {
+            "description": "Given a partial script / directory path, returns a list of suffixes that could potentially be used to complete it, including alias and path matches. Requires version 1.74 or newer.",
+            "method": "completeProgram",
+            "parameter": "(string prefix)",
+            "returnValue": "table completionList"
+        }, {
+            "description": "Registers a function that determines how shell.complete() handles completion behavior for a given script. Requires version 1.74 or newer.",
+            "method": "setCompletionFunction",
+            "parameter": "(string path, function completionFunction)",
+            "returnValue": "nil"
+        }, {
+            "description": "Returns a pointer to the table containing functions registered by shell.setCompletionFunction() for use with shell.complete(). Requires version 1.74 or newer.",
+            "method": "getCompletionInfo",
+            "parameter": "()",
+            "returnValue": "table completionFunctions"
+        }]
+    }, {
+        "childClasses": [],
+        "className": "term",
+        "methods": [{
+            "description": "Writes text to the screen, using the current text and background colors.",
+            "method": "write",
+            "parameter": "(string text)",
+            "returnValue": "nil"
+        }, {
+            "description": "Writes text to the screen using the specified text and background colors. Requires version 1.74 or newer.",
+            "method": "blit",
+            "parameter": "(string text, string text colors, string background colors)",
+            "returnValue": "nil"
+        }, {
+            "description": "Clears the entire screen.",
+            "method": "clear",
+            "parameter": "()",
+            "returnValue": "nil"
+        }, {
+            "description": "Clears the line the cursor is on.",
+            "method": "clearLine",
+            "parameter": "()",
+            "returnValue": "nil"
+        }, {
+            "description": "Returns two arguments containing the x and the y position of the cursor.",
+            "method": "getCursorPos",
+            "parameter": "()",
+            "returnValue": "number x, number y"
+        }, {
+            "description": "Sets the cursor's position.",
+            "method": "setCursorPos",
+            "parameter": "(number x, number y)",
+            "returnValue": "nil"
+        }, {
+            "description": "Disables the blinking or turns it on.",
+            "method": "setCursorBlink",
+            "parameter": "(boolean bool)",
+            "returnValue": "nil"
+        }, {
+            "description": "Returns whether the terminal supports color.",
+            "method": "isColor",
+            "parameter": "()",
+            "returnValue": "boolean"
+        }, {
+            "description": "Returns two arguments containing the x and the y values stating the size of the screen. (Good for if you're making something to be compatible with both Turtles and Computers.)",
+            "method": "getSize",
+            "parameter": "()",
+            "returnValue": "number x, number y"
+        }, {
+            "description": "Scrolls the terminal n lines.",
+            "method": "scroll",
+            "parameter": "(number n)",
+            "returnValue": "nil"
+        }, {
+            "description": "Redirects terminal output to another terminal object (such as a window or wrapped monitor). Available only to the base term object.",
+            "method": "redirect",
+            "parameter": "(target)",
+            "returnValue": "table previous terminal object"
+        }, {
+            "description": "Returns the current terminal object. Requires version 1.6 or newer, available only to the base term object.",
+            "method": "current",
+            "parameter": "()",
+            "returnValue": "table terminal object"
+        }, {
+            "description": "Returns the original terminal object. Requires version 1.6 or newer, available only to the base term object.",
+            "method": "native",
+            "parameter": "()",
+            "returnValue": "table terminal object"
+        }, {
+            "description": "Sets the text color of the terminal. Limited functionality without an Advanced Computer / Turtle / Monitor.",
+            "method": "setTextColor",
+            "parameter": "(number color)",
+            "returnValue": "nil"
+        }, {
+            "description": "Returns the current text color of the terminal. Requires version 1.74 or newer.",
+            "method": "getTextColor",
+            "parameter": "()",
+            "returnValue": "number color"
+        }, {
+            "description": "Sets the background color of the terminal. Limited functionality without an Advanced Computer / Turtle / Monitor.",
+            "method": "setBackgroundColor",
+            "parameter": "(number color)",
+            "returnValue": "nil"
+        }, {
+            "description": "Returns the current background color of the terminal. Requires version 1.74 or newer.",
+            "method": "getBackgroundColor",
+            "parameter": "()",
+            "returnValue": "number color"
+        }, {
+            "description": "Sets the text scale. Available only to monitor objects.",
+            "method": "setTextScale",
+            "parameter": "(number scale)",
+            "returnValue": "nil"
+        }, {
+            "description": "Determines whether subsequent renders to the window will be visible. Available only to window objects.",
+            "method": "setVisible",
+            "parameter": "(boolean visibility)",
+            "returnValue": "nil"
+        }, {
+            "description": "Redraws the contents of the window. Available only to window objects.",
+            "method": "redraw",
+            "parameter": "()",
+            "returnValue": "nil"
+        }, {
+            "description": "Returns the cursor back to its position / state within the window. Available only to window objects.",
+            "method": "restoreCursor",
+            "parameter": "()",
+            "returnValue": "nil"
+        }, {
+            "description": "Returns the top left co-ordinate of the window. Available only to window objects.",
+            "method": "getPosition",
+            "parameter": "()",
+            "returnValue": "number x, number y"
+        }, {
+            "description": "Moves and / or resizes the window. Available only to window objects.",
+            "method": "reposition",
+            "parameter": "(number x, number y [, number width, number height])",
+            "returnValue": "nil"
+        }]
+    }, {
+        "childClasses": [],
+        "className": "textutils",
+        "methods": [{
+            "description": "Writes string text at current cursor position, character-by-character. Number argument rate is optional and is defaulted to 20. The higher the value of rate, the faster text is written (passing a value of 1 writes one character per second).",
+            "method": "slowWrite",
+            "parameter": "(string text, number rate)",
+            "returnValue": "nil"
+        }, {
+            "description": "Prints string text at current cursor position, character-by-character. Number argument rate is optional and is defaulted to 20. The higher the value of rate, the faster text is printed (passing a value of 1 prints one character per second). This function also prints a newline.",
+            "method": "slowPrint",
+            "parameter": "(string text, number rate)",
+            "returnValue": "nil"
+        }, {
+            "description": "Takes input time and formats it in a more readable format. If the second value is true, returns time in twenty-four hour format; if the second value is false, returns time in twelve-hour format, with AM or PM. Default for twentyFourHour is false.",
+            "method": "formatTime",
+            "parameter": "(number time, boolean twentyFourHour)",
+            "returnValue": "string formattedTime"
+        }, {
+            "description": "Prints tables in an ordered form. Each table is a row, the column width is auto-adjusted. If it encounters a number instead of a table then sets the text color to it.",
+            "method": "tabulate",
+            "parameter": "(table table/number color, table table2/number color2, ...)",
+            "returnValue": "nil"
+        }, {
+            "description": "Prints tables in an ordered form, like textutils.tabulate. However, it waits for confirmation before scrolling down.",
+            "method": "pagedTabulate",
+            "parameter": "(table table/number color, table table2/number color2, ...)",
+            "returnValue": "nil"
+        }, {
+            "description": "Prints string text onto the screen, but waits for confirmation (after at least freeLines have been scrolled) before scrolling down further. Default for freeLines is 0.",
+            "method": "pagedPrint",
+            "parameter": "(string text [, number freeLines])",
+            "returnValue": "number linesPrinted"
+        }, {
+            "description": "Returns a string representation of the data data for storage or transmission. Also exists as textutils.serialise under CC 1.6 or later.",
+            "method": "serialize",
+            "parameter": "(table/string/number/boolean/nil data)",
+            "returnValue": "string serializedData"
+        }, {
+            "description": "Returns the data reassembled from string serializedData. Used mainly together with textutils.serialize(). Also exists as textutils.unserialise under CC 1.6 or later.",
+            "method": "unserialize",
+            "parameter": "(string serializedData)",
+            "returnValue": "any unserializedData"
+        }, {
+            "description": "Returns a JSON representation of the data data in a form of a string, mainly for command usage. Also exists as textutils.serialiseJSON. Requires CC 1.7 or later.",
+            "method": "serializeJSON",
+            "parameter": "(table/string/number/boolean data [, boolean unquote keys])",
+            "returnValue": "string serializedData"
+        }, {
+            "description": "Makes a string safe to encode into a url. Spaces are replaced with +s. Unsafe characters such as '\\', '£' and '}' are translated into ASCII code and preceded with a % for transmission. For reference visit: [1].",
+            "method": "urlEncode",
+            "parameter": "(string urlUnsafeString)",
+            "returnValue": "string urlSafeString"
+        }, {
+            "description": "Returns a list of strings that could be combined with the provided name to produce valid entries in the specified environment. Requires version 1.74 or later.",
+            "method": "complete",
+            "parameter": "(string partial name [, table environment])",
+            "returnValue": "table matches"
+        }]
+    }, {
+        "childClasses": [],
+        "className": "turtle",
+        "methods": [{
+            "description": "Try to move the turtle forward",
+            "method": "forward",
+            "parameter": "()",
+            "returnValue": "boolean success"
+        }, {
+            "description": "Try to move the turtle backward",
+            "method": "back",
+            "parameter": "()",
+            "returnValue": "boolean success"
+        }, {
+            "description": "Try to move the turtle up",
+            "method": "up",
+            "parameter": "()",
+            "returnValue": "boolean success"
+        }, {
+            "description": "Try to move the turtle down",
+            "method": "down",
+            "parameter": "()",
+            "returnValue": "boolean success"
+        }, {
+            "description": "Turn the turtle left",
+            "method": "turnLeft",
+            "parameter": "()",
+            "returnValue": "boolean success"
+        }, {
+            "description": "Turn the turtle right",
+            "method": "turnRight",
+            "parameter": "()",
+            "returnValue": "boolean success"
+        }, {
+            "description": "Make the turtle select slot slotNum (1 is top left, 16 (9 in 1.33 and earlier) is bottom right)",
+            "method": "select",
+            "parameter": "(number slotNum)",
+            "returnValue": "boolean success"
+        }, {
+            "description": "Indicates the currently selected inventory slot",
+            "method": "getSelectedSlot",
+            "parameter": "()",
+            "returnValue": "number slot"
+        }, {
+            "description": "Counts how many items are in the currently selected slot or, if specified, slotNum slot",
+            "method": "getItemCount",
+            "parameter": "([number slotNum])",
+            "returnValue": "number count"
+        }, {
+            "description": "Counts how many remaining items you need to fill the stack in the currently selected slot or, if specified, slotNum slot",
+            "method": "getItemSpace",
+            "parameter": "([number slotNum])",
+            "returnValue": "number count"
+        }, {
+            "description": "Returns the ID string, count and damage values of currently selected slot or, if specified, slotNum slot",
+            "method": "getItemDetail",
+            "parameter": "([number slotNum])",
+            "returnValue": "table data"
+        }, {
+            "description": "Attempts to equip an item in the current slot to the turtle's left side, switching the previously equipped item back into the inventory",
+            "method": "equipLeft",
+            "parameter": "()",
+            "returnValue": "boolean success"
+        }, {
+            "description": "Attempts to equip an item in the current slot to the turtle's right side, switching the previously equipped item back into the inventory",
+            "method": "equipRight",
+            "parameter": "()",
+            "returnValue": "boolean success"
+        }, {
+            "description": "Attacks in front of the turtle.",
+            "method": "attack",
+            "parameter": "()",
+            "returnValue": "boolean success"
+        }, {
+            "description": "Attacks above the turtle.",
+            "method": "attackUp",
+            "parameter": "()",
+            "returnValue": "boolean success"
+        }, {
+            "description": "Attacks under the turtle.",
+            "method": "attackDown",
+            "parameter": "()",
+            "returnValue": "boolean success"
+        }, {
+            "description": "Breaks the block in front. With hoe: tills the dirt in front of it.",
+            "method": "dig",
+            "parameter": "()",
+            "returnValue": "boolean success"
+        }, {
+            "description": "Breaks the block above. With hoe: tills the dirt above it.",
+            "method": "digUp",
+            "parameter": "()",
+            "returnValue": "boolean success"
+        }, {
+            "description": "Breaks the block below. With hoe: tills the dirt below it.",
+            "method": "digDown",
+            "parameter": "()",
+            "returnValue": "boolean success"
+        }, {
+            "description": "Places a block of the selected slot in front. Engrave signText on signs if provided. Collects water or lava if the currently selected slot is an empty bucket.",
+            "method": "place",
+            "parameter": "([string signText])",
+            "returnValue": "boolean success"
+        }, {
+            "description": "Places a block of the selected slot above. Collects water or lava if the currently selected slot is an empty bucket.",
+            "method": "placeUp",
+            "parameter": "()",
+            "returnValue": "boolean success"
+        }, {
+            "description": "Places a block of the selected slot below. Collects water or lava if the currently selected slot is an empty bucket.",
+            "method": "placeDown",
+            "parameter": "()",
+            "returnValue": "boolean success"
+        }, {
+            "description": "Detects if there is a block in front. Does not detect mobs.",
+            "method": "detect",
+            "parameter": "()",
+            "returnValue": "boolean result"
+        }, {
+            "description": "Detects if there is a block above",
+            "method": "detectUp",
+            "parameter": "()",
+            "returnValue": "boolean result"
+        }, {
+            "description": "Detects if there is a block below",
+            "method": "detectDown",
+            "parameter": "()",
+            "returnValue": "boolean result"
+        }, {
+            "description": "Returns the ID string and metadata of the block in front of the Turtle",
+            "method": "inspect",
+            "parameter": "()",
+            "returnValue": "boolean success, table data/string error message"
+        }, {
+            "description": "Returns the ID string and metadata of the block above the Turtle",
+            "method": "inspectUp",
+            "parameter": "()",
+            "returnValue": "boolean success, table data/string error message"
+        }, {
+            "description": "Returns the ID string and metadata of the block below the Turtle",
+            "method": "inspectDown",
+            "parameter": "()",
+            "returnValue": "boolean success, table data/string error message"
+        }, {
+            "description": "Detects if the block in front is the same as the one in the currently selected slot",
+            "method": "compare",
+            "parameter": "()",
+            "returnValue": "boolean result"
+        }, {
+            "description": "Detects if the block above is the same as the one in the currently selected slot",
+            "method": "compareUp",
+            "parameter": "()",
+            "returnValue": "boolean result"
+        }, {
+            "description": "Detects if the block below is the same as the one in the currently selected slot",
+            "method": "compareDown",
+            "parameter": "()",
+            "returnValue": "boolean result"
+        }, {
+            "description": "Compare the current selected slot and the given slot to see if the items are the same. Returns true if they are the same, false if not.",
+            "method": "compareTo",
+            "parameter": "(number slot)",
+            "returnValue": "boolean result"
+        }, {
+            "description": "Drops all items in the selected slot, or specified, drops count items. [>= 1.4 only:] If there is a inventory on the side (i.e in front of the turtle) it will try to place into the inventory, returning false if the inventory is full.",
+            "method": "drop",
+            "parameter": "([number count])",
+            "returnValue": "boolean success"
+        }, {
+            "description": "Drops all items in the selected slot, or specified, drops count items. [>= 1.4 only:] If there is a inventory on the side (i.e above the turtle) it will try to place into the inventory, returning false if the inventory is full.",
+            "method": "dropUp",
+            "parameter": "([number count])",
+            "returnValue": "boolean success"
+        }, {
+            "description": "Drops all items in the selected slot, or specified, drops count items. [>= 1.4 only:] If there is a inventory on the side (i.e below the turtle) it will try to place into the inventory, returning false if the inventory is full. If above a furnace, will place item in the top slot.",
+            "method": "dropDown",
+            "parameter": "([number count])",
+            "returnValue": "boolean success"
+        }, {
+            "description": "Picks up an item stack of any number, from the ground or an inventory in front of the turtle, then places it in the selected slot. If the turtle can't pick up the item, the function returns false. amount parameter requires ComputerCraft 1.6 or later.",
+            "method": "suck",
+            "parameter": "([number amount])",
+            "returnValue": "boolean success"
+        }, {
+            "description": "Picks up an item stack of any number, from the ground or an inventory above the turtle, then places it in the selected slot. If the turtle can't pick up the item, the function returns false. amount parameter requires ComputerCraft 1.6 or later.",
+            "method": "suckUp",
+            "parameter": "([number amount])",
+            "returnValue": "boolean success"
+        }, {
+            "description": "Picks up an item stack of any number, from the ground or an inventory below the turtle, then places it in the selected slot. If the turtle can't pick up the item, the function returns false. amount parameter requires ComputerCraft 1.6 or later.",
+            "method": "suckDown",
+            "parameter": "([number amount])",
+            "returnValue": "boolean success"
+        }, {
+            "description": "If the current selected slot contains a fuel item, it will consume it to give the turtle the ability to move. Added in 1.4 and is only needed in needfuel mode. If the current slot doesn't contain a fuel item, it returns false. Fuel values for different items can be found at Turtle.refuel#Fuel_Values. If a quantity is specified, it will refuel only up to that many items, otherwise, it will consume all the items in the slot.",
+            "method": "refuel",
+            "parameter": "([number quantity])",
+            "returnValue": "boolean success"
+        }, {
+            "description": "Returns the current fuel level of the turtle, this is the number of blocks the turtle can move. If turtleNeedFuel = 0 then it returns \"unlimited\".",
+            "method": "getFuelLevel",
+            "parameter": "()",
+            "returnValue": "number fuel"
+        }, {
+            "description": "Returns the maximum amount of fuel a turtle can store - by default, 20,000 for regular turtles, 100,000 for advanced. If turtleNeedFuel = 0 then it returns \"unlimited\".",
+            "method": "getFuelLimit",
+            "parameter": "()",
+            "returnValue": "number fuel"
+        }, {
+            "description": "Transfers quantity items from the selected slot to slot. If quantity isn't specified, will attempt to transfer everything in the selected slot to slot.",
+            "method": "transferTo",
+            "parameter": "(number slot [, number quantity])",
+            "returnValue": "boolean success"
+        }]
+    }, {
+        "childClasses": [],
+        "className": "vector",
+        "methods": [{
+            "description": "Creates a vector.",
+            "method": "new",
+            "parameter": "(number x, number y, number z)",
+            "returnValue": ""
+        }]
+    }, {
+        "childClasses": [],
+        "className": "window",
+        "methods": [{
+            "description": "Creates and returns a new window object, similar to a wrapped monitor. Refer to the term API for a list of functions attached to it.",
+            "method": "create",
+            "parameter": "(table parentTerm, number x, number y, number width, number height [, boolean visible])",
+            "returnValue": "table windowObject"
+        }]
+    }],
+    "className": "root",
+    "methods": []
+}
